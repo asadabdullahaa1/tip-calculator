@@ -36,9 +36,11 @@ Accessibility skipped: I did not add a full automated accessibility test pass wi
 
 ## 4. AI usage
 
-I used OpenAI Codex in this workspace to scaffold and implement the app. I asked it to build the frontend assessment deliverables: the single-screen tip calculator, inline validation, responsive styling, README, ANSWERS file, and progress commits.
+I used OpenAI Codex as a coding helper while building my tip calculator idea. I used it mainly for second-pass implementation support: checking whether my validation covered edge cases, helping organize the README and ANSWERS file, and suggesting small accessibility details such as `aria-describedby`, `aria-invalid`, and `aria-pressed`.
 
-Codex produced the first pass of the HTML, CSS, JavaScript, and docs. I changed the number parsing after the initial implementation so values like `12.` remain valid while the user is still typing, instead of flashing an error mid-entry. I also added an explicit bill upper bound and prevented form submit reloads so pasted extreme values and pressing Enter do not break the interaction.
+One specific place I used AI was the number validation logic. I asked Codex to review the input behavior for realistic break cases like zero people, negative bills, pasted text, and very large numbers. The suggested validation was stricter than I wanted at first because it treated an in-progress value like `12.` as invalid while the user was still typing. I changed the parser to allow that temporary decimal state so the UI would not flash an error during normal typing, while still rejecting pasted garbage text and invalid final values.
+
+I also used AI to help phrase the documentation clearly, but I made the final decisions about the stack, layout, rounding policy, and interaction behavior based on what I wanted the calculator experience to feel like.
 
 ## 5. Honest gap
 
