@@ -1,17 +1,17 @@
 :root {
-  color-scheme: light;
-  --ink: #172126;
-  --muted: #607078;
-  --page: #f5f7f4;
-  --panel: #ffffff;
-  --result: #173f3a;
-  --line: #cfd8d4;
-  --soft: #eef4f1;
-  --accent: #0f766e;
-  --accent-strong: #0b5d58;
-  --focus: #d97706;
-  --warn: #b42318;
-  --warn-soft: #fff1ee;
+  color-scheme: dark;
+  --ink: #f4f4ef;
+  --muted: #b9beb6;
+  --page: #6f746f;
+  --panel: #2d302f;
+  --result: #090a0a;
+  --line: #4f5551;
+  --soft: #3a3e3c;
+  --accent: #8a9a5b;
+  --accent-strong: #c4d483;
+  --focus: #a6b56c;
+  --warn: #ffb4a8;
+  --warn-soft: #3a2523;
 }
 
 * {
@@ -24,7 +24,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   color: var(--ink);
   background:
-    linear-gradient(135deg, rgba(15, 118, 110, 0.08), transparent 42%),
+    linear-gradient(135deg, rgba(138, 154, 91, 0.18), transparent 38%),
+    linear-gradient(315deg, rgba(9, 10, 10, 0.42), transparent 46%),
     var(--page);
 }
 
@@ -49,7 +50,7 @@ input {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 8px;
-  box-shadow: 0 28px 70px rgba(23, 33, 38, 0.13);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.34);
 }
 
 .form-panel {
@@ -103,14 +104,14 @@ legend {
   align-items: center;
   gap: 8px;
   padding: 0 14px;
-  background: #fbfcfb;
+  background: #202322;
   border: 1px solid var(--line);
   border-radius: 8px;
 }
 
 .input-wrap:focus-within {
   border-color: var(--focus);
-  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.18);
+  box-shadow: 0 0 0 3px rgba(166, 181, 108, 0.28);
 }
 
 .input-wrap span {
@@ -131,7 +132,7 @@ input {
 }
 
 input::placeholder {
-  color: #98a5ab;
+  color: #8e948d;
 }
 
 .tip-options {
@@ -151,22 +152,23 @@ input::placeholder {
 }
 
 .tip-button {
-  color: var(--accent-strong);
+  color: var(--ink);
   background: var(--soft);
 }
 
 .tip-button:hover {
   border-color: var(--accent);
+  background: #444a45;
 }
 
 .tip-button:focus-visible,
 .reset-button:focus-visible {
-  outline: 3px solid rgba(217, 119, 6, 0.35);
+  outline: 3px solid rgba(166, 181, 108, 0.42);
   outline-offset: 2px;
 }
 
 .tip-button.is-active {
-  color: #ffffff;
+  color: #10120f;
   background: var(--accent);
   border-color: var(--accent);
 }
@@ -197,12 +199,12 @@ input::placeholder {
 .reset-button {
   width: fit-content;
   padding: 0 18px;
-  color: #ffffff;
-  background: #47545a;
+  color: var(--ink);
+  background: #151716;
 }
 
 .reset-button:hover {
-  background: #354046;
+  background: #0c0d0d;
 }
 
 .result-panel {
@@ -212,7 +214,7 @@ input::placeholder {
   padding: 32px;
   color: #ffffff;
   background:
-    linear-gradient(160deg, rgba(217, 119, 6, 0.24), transparent 54%),
+    linear-gradient(160deg, rgba(138, 154, 91, 0.34), transparent 54%),
     var(--result);
 }
 
