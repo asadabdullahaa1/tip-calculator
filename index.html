@@ -14,7 +14,61 @@
             <p class="eyebrow">Bill splitter</p>
             <h1 id="app-title">Tip Calculator</h1>
           </header>
+
+          <form class="inputs" id="tip-form" novalidate>
+            <div class="field" data-field="bill">
+              <label for="bill">Bill amount (USD)</label>
+              <div class="input-wrap">
+                <span aria-hidden="true">$</span>
+                <input id="bill" name="bill" type="text" inputmode="decimal" autocomplete="off" placeholder="0.00" aria-describedby="bill-error">
+              </div>
+              <p class="error" id="bill-error" role="status"></p>
+            </div>
+
+            <fieldset class="field tip-field">
+              <legend>Tip percentage</legend>
+              <div class="tip-options" role="group" aria-label="Tip presets">
+                <button type="button" class="tip-button" data-tip="10">10%</button>
+                <button type="button" class="tip-button is-active" data-tip="15">15%</button>
+                <button type="button" class="tip-button" data-tip="20">20%</button>
+              </div>
+              <label class="custom-tip" for="tip">
+                <span>Custom tip</span>
+                <div class="input-wrap">
+                  <input id="tip" name="tip" type="text" inputmode="decimal" autocomplete="off" value="15" aria-describedby="tip-error">
+                  <span aria-hidden="true">%</span>
+                </div>
+              </label>
+              <p class="error" id="tip-error" role="status"></p>
+            </fieldset>
+
+            <div class="field" data-field="people">
+              <label for="people">Number of people</label>
+              <div class="input-wrap">
+                <input id="people" name="people" type="text" inputmode="numeric" autocomplete="off" value="2" aria-describedby="people-error">
+              </div>
+              <p class="error" id="people-error" role="status"></p>
+            </div>
+
+            <button class="reset-button" type="reset">Reset</button>
+          </form>
         </div>
+
+        <aside class="result-panel" aria-label="Calculated totals" aria-live="polite">
+          <div class="result-row">
+            <span>Total tip</span>
+            <strong id="tip-total">$0.00</strong>
+          </div>
+          <div class="result-row">
+            <span>Grand total</span>
+            <strong id="grand-total">$0.00</strong>
+          </div>
+          <div class="per-person">
+            <span>Each person owes</span>
+            <strong id="per-person">$0.00</strong>
+          </div>
+          <p class="rounding-note" id="rounding-note">Rounded up to the nearest cent per person.</p>
+        </aside>
       </section>
     </main>
     <script src="script.js"></script>

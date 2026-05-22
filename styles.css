@@ -1,13 +1,17 @@
 :root {
   color-scheme: light;
-  --ink: #182126;
-  --muted: #66727a;
+  --ink: #172126;
+  --muted: #607078;
   --page: #f5f7f4;
   --panel: #ffffff;
+  --result: #173f3a;
   --line: #cfd8d4;
+  --soft: #eef4f1;
   --accent: #0f766e;
   --accent-strong: #0b5d58;
+  --focus: #d97706;
   --warn: #b42318;
+  --warn-soft: #fff1ee;
 }
 
 * {
@@ -19,7 +23,14 @@ body {
   min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
   color: var(--ink);
-  background: var(--page);
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.08), transparent 42%),
+    var(--page);
+}
+
+button,
+input {
+  font: inherit;
 }
 
 .app-shell {
@@ -30,14 +41,23 @@ body {
 }
 
 .calculator {
-  width: min(100%, 920px);
+  width: min(100%, 960px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(310px, 0.92fr);
+  gap: 0;
+  overflow: hidden;
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 8px;
+  box-shadow: 0 28px 70px rgba(23, 33, 38, 0.13);
 }
 
 .form-panel {
-  padding: 28px;
+  padding: 32px;
+}
+
+.app-header {
+  margin-bottom: 28px;
 }
 
 .eyebrow {
@@ -50,5 +70,218 @@ body {
 
 h1 {
   margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+}
+
+.inputs {
+  display: grid;
+  gap: 20px;
+}
+
+.field,
+.tip-field {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+label,
+legend {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.input-wrap {
+  min-height: 52px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  background: #fbfcfb;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.input-wrap:focus-within {
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.18);
+}
+
+.input-wrap span {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  border: 0;
+  outline: 0;
+  color: var(--ink);
+  background: transparent;
+  font-size: 1.16rem;
+  font-weight: 700;
+}
+
+input::placeholder {
+  color: #98a5ab;
+}
+
+.tip-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.tip-button,
+.reset-button {
+  min-height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.tip-button {
+  color: var(--accent-strong);
+  background: var(--soft);
+}
+
+.tip-button:hover {
+  border-color: var(--accent);
+}
+
+.tip-button:focus-visible,
+.reset-button:focus-visible {
+  outline: 3px solid rgba(217, 119, 6, 0.35);
+  outline-offset: 2px;
+}
+
+.tip-button.is-active {
+  color: #ffffff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.custom-tip {
+  margin-bottom: 0;
+}
+
+.custom-tip span:first-child {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.error {
+  min-height: 1.2em;
+  margin: 6px 0 0;
+  color: var(--warn);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.field.has-error .input-wrap,
+.tip-field.has-error .input-wrap {
+  background: var(--warn-soft);
+  border-color: var(--warn);
+}
+
+.reset-button {
+  width: fit-content;
+  padding: 0 18px;
+  color: #ffffff;
+  background: #47545a;
+}
+
+.reset-button:hover {
+  background: #354046;
+}
+
+.result-panel {
+  display: grid;
+  align-content: center;
+  gap: 20px;
+  padding: 32px;
+  color: #ffffff;
+  background:
+    linear-gradient(160deg, rgba(217, 119, 6, 0.24), transparent 54%),
+    var(--result);
+}
+
+.result-row,
+.per-person {
+  display: grid;
+  gap: 8px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.result-row span,
+.per-person span,
+.rounding-note {
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 700;
+}
+
+.result-row strong {
   font-size: 2rem;
+  line-height: 1.05;
+}
+
+.per-person strong {
+  font-size: clamp(2.65rem, 6vw, 4.6rem);
+  line-height: 0.98;
+}
+
+.rounding-note {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    place-items: start center;
+    padding: 12px;
+  }
+
+  .calculator {
+    grid-template-columns: 1fr;
+  }
+
+  .form-panel,
+  .result-panel {
+    padding: 22px;
+  }
+
+  .app-header {
+    margin-bottom: 22px;
+  }
+
+  .result-panel {
+    align-content: start;
+  }
+}
+
+@media (max-width: 420px) {
+  .tip-options {
+    grid-template-columns: 1fr;
+  }
+
+  .tip-button,
+  .reset-button,
+  .input-wrap {
+    min-height: 48px;
+  }
+
+  .per-person strong {
+    font-size: 2.45rem;
+  }
 }
